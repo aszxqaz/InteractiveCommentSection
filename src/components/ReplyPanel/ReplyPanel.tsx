@@ -56,10 +56,11 @@ export const ReplyPanel = forwardRef(function _ReplyPanel(
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
-    const content = (e.target as HTMLFormElement)["content"].value.slice(greeting.length)
-
+    const pureContent = (e.target as HTMLFormElement)["content"].value.slice(greeting.length)
+    
     try {
-      const data = await onSubmit(content)
+      const data = await onSubmit(pureContent)
+      setContent("")
       console.log(data)
     } catch (e) {
       console.log(e)
