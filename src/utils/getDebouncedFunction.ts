@@ -1,7 +1,7 @@
 export const getDebouncedCallback = (
   timemap: Record<string, number>,
   delay: number,
-  callback: Function
+  callback: () => void
 ) => {
   const id = Math.random()
   return () => {

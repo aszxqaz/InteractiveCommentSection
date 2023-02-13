@@ -1,19 +1,17 @@
-import { useQuery } from "@tanstack/react-query"
 import { UserContext } from "pages"
-import { useContext, useMemo, useState } from "react"
-import { getComments } from "client/api/fetchers"
+import React, { DetailedHTMLProps, FC, HTMLAttributes, useContext, useMemo, useState } from "react"
 import { ReplyPanel } from "src/components/ReplyPanel/ReplyPanel"
 import { Comment } from "../../components"
-import { BaseProps } from "../../components/types"
 import { getClassName } from "../../utils/getClassName"
 import { CommentsContext } from "./CommentsContext"
 import { useCommentsMutations } from "./useCommentsMutations"
 import { useCommentsQuery } from "client/api/useQueries"
 import { BaseSpinner } from "src/components/Spinner/Spinner"
 
-interface CommentsProps extends BaseProps {}
-
-export const Comments = ({ className, style }: CommentsProps) => {
+export const Comments: FC<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>> = ({
+  className,
+  style,
+}) => {
   const { data: comments = [], isLoading } = useCommentsQuery()
   const me = useContext(UserContext)
   const {
@@ -73,8 +71,8 @@ export const Comments = ({ className, style }: CommentsProps) => {
       <ReplyPanel
         placeholder="Add a comment..."
         buttonText="Send"
-        onSubmit={async content => {
-          handleCreateComment({ content })
+        onSubmit={content => {
+          return handleCreateComment({ content })
         }}
       />
     </section>

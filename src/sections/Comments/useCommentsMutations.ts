@@ -22,7 +22,7 @@ export const useCommentsMutations = () => {
   const client = useQueryClient()
 
   const createCommentMutation = useMutation(createComment, {
-    onSuccess: (data, args) => {
+    onSuccess: data => {
       client.setQueryData<CommentServerResponse[]>(["comments"], comments =>
         produce(comments, draft => {
           draft.push(data)
@@ -33,7 +33,7 @@ export const useCommentsMutations = () => {
   })
 
   const createReplyMutation = useMutation(createReply, {
-    onSuccess: (data, args) => {
+    onSuccess: data => {
       client.setQueryData<CommentServerResponse[]>(["comments"], comments =>
         produce(comments, draft => {
           const { commentId, ...reply } = data
@@ -46,7 +46,7 @@ export const useCommentsMutations = () => {
   })
 
   const updateCommentMutation = useMutation(updateComment, {
-    onSuccess: (data, args) => {
+    onSuccess: data => {
       client.setQueryData<CommentServerResponse[]>(["comments"], comments =>
         produce(comments, draft => {
           const comment = draft.find(_ => _.id === data.id)
@@ -58,7 +58,7 @@ export const useCommentsMutations = () => {
   })
 
   const updateReplyMutation = useMutation(updateReply, {
-    onSuccess: (data, args) => {
+    onSuccess: data => {
       client.setQueryData<CommentServerResponse[]>(["comments"], comments =>
         produce(comments, draft => {
           return draft.map(comment => ({

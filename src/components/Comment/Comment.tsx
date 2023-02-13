@@ -32,7 +32,7 @@ function getIsReply(
   return false
 }
 
-let Comment = ({ className, style, comment, children, voted }: CommentProps) => {
+let Comment = ({ className, comment, voted }: CommentProps) => {
   const panelRef = useRef<HTMLDivElement>()
   const showDialog = useDialog()
   const me = useContext(UserContext)
@@ -48,13 +48,12 @@ let Comment = ({ className, style, comment, children, voted }: CommentProps) => 
     handleDeleteReply,
   } = useContext(CommentsContext)
   const { handleVoteComment, handleVoteReply } = useVotesMutations(me.username)
-  const [isReplyClicked, setIsReplyClicked] = useState(false)
   const [isEditingMode, setIsEditingMode] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const isCommentActuallyReply = getIsReply(comment)
   const _className = isCommentActuallyReply ? "reply" : "comment"
-  const { content, createdAt, id, score, user, upvoted, downvoted } = comment
+  const { content, createdAt, score, user } = comment
   const isAuthor = comment.user.username === me.username
 
   const containerRef = useRef<HTMLDivElement>()
@@ -192,7 +191,7 @@ let Comment = ({ className, style, comment, children, voted }: CommentProps) => 
                       title: "Delete comment",
                       primaryBtnOnClick: async () => {
                         setIsSubmitting(true)
-                        const res = isCommentActuallyReply
+                        isCommentActuallyReply
                           ? await handleDeleteReply({ replyId: comment.id })
                           : await handleDeleteComment({ commentId: comment.id })
                         setIsSubmitting(false)

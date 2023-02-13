@@ -2,20 +2,19 @@ type ClassName =
   | {
       [a: string]: boolean
     }
-  | string | undefined
-
-const a : ClassName[] = []
+  | string
+  | undefined
 
 export const getClassName = (args: ClassName[]) => {
   let cl = ""
-  args.forEach((arg, i, arr) => {
+  args.forEach(arg => {
     if (typeof arg === "string") {
-      cl += arg + ' '
+      cl += arg + " "
     }
     if (typeof arg === "object") {
-      Object.entries(arg).forEach((entry, j, argarr) => {
+      Object.entries(arg).forEach(entry => {
         if (entry[1]) {
-          cl += entry[0] + ' '
+          cl += entry[0] + " "
         }
       })
     }

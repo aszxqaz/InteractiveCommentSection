@@ -1,8 +1,11 @@
-export const setOutsideClickHandler = (containerElement: () => HTMLElement | HTMLElement, onOutsideClick: Function) => {
+export const setOutsideClickHandler = (
+  containerElement: () => HTMLElement | HTMLElement,
+  onOutsideClick: () => void
+) => {
   const outsideClickHandler: EventListener = e => {
     let elem = e.target as HTMLElement
     let isOutsideClicked = true
-    const container = typeof containerElement === 'function' ? containerElement() : containerElement
+    const container = typeof containerElement === "function" ? containerElement() : containerElement
     while (elem) {
       console.log(elem)
       if (elem === container) {

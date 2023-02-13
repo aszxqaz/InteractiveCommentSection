@@ -1,10 +1,11 @@
 import { getClassName } from "src/utils/getClassName"
-import { BaseProps } from "../types"
 import styles from "./Spinner.module.scss"
+import { DetailedHTMLProps, FC, HTMLAttributes } from "react"
 
-interface BaseSpinnerProps extends BaseProps {}
-
-export const BaseSpinner = ({ className, style }: BaseSpinnerProps) => (
+export const BaseSpinner: FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = ({
+  className,
+  style,
+}) => (
   <div className={getClassName([styles.spinner, className])} style={style}>
     <svg
       stroke="currentColor"

@@ -1,4 +1,4 @@
-import { UserEntityServerResponse, UserServerResponse } from "server/server-response.types"
+import { UserEntityServerResponse } from "server/server-response.types"
 import { Avatar } from "src/components"
 import styles from "./Header.module.scss"
 

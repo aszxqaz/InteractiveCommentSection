@@ -6,8 +6,6 @@ import { userService } from "server/services/user.service"
 import { NextApiRequest, NextApiResponse } from "next"
 
 export const getToken = (req: NextApiRequest) => {
-  const token = req.cookies.token
-
   try {
     const user = verify(req.cookies.token, process.env.COOKIE_SECRET) as {
       username: string

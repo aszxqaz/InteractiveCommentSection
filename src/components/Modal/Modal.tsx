@@ -1,4 +1,4 @@
-import { createContext, Dispatch, ReactNode, useReducer, useState } from "react"
+import { createContext, Dispatch, ReactNode, useState } from "react"
 import { Dialog, DialogProps } from "../Popups/Dialog"
 
 type ModalProviderProps = {

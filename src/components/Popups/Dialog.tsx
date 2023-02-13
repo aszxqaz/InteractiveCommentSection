@@ -1,6 +1,5 @@
 import styles from "./Dialog.module.scss"
 import { BaseButton } from "../Button/Button"
-import { MouseEventHandler } from "react"
 import { getClassName } from "src/utils/getClassName"
 import { OverlayingPopup } from "./OverlayingPopup"
 
@@ -21,13 +20,13 @@ export const Dialog = ({
   text,
   primaryBtnOnClick,
   primaryBtnText,
-  secondaryBtnOnClick = () => {},
+  secondaryBtnOnClick,
   primaryBtnType = "default",
   secondaryBtnText,
   isOpened,
   onClose,
 }: DialogProps) => {
-  console.log('here')
+  console.log("here")
   return (
     <OverlayingPopup isOpened={isOpened} onClose={onClose}>
       <div className={styles.container}>
@@ -38,7 +37,7 @@ export const Dialog = ({
             className={getClassName([styles.button, styles["button-secondary"]])}
             onClick={() => {
               onClose()
-              secondaryBtnOnClick()
+              secondaryBtnOnClick?.()
             }}
           >
             {secondaryBtnText}

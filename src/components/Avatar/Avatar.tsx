@@ -1,7 +1,7 @@
 import { UserEntityServerResponse } from "../../../server/server-response.types"
 import { getClassName } from "../../utils/getClassName"
 import { objectKeys } from "../../utils/objectKeys"
-import { BaseProps, ImageSource } from "../types"
+import { BaseProps } from "../types"
 
 interface AvatarProps extends BaseProps {
   size?: "sm" | "md" | "lg"

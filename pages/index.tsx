@@ -1,10 +1,10 @@
-import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query"
-import { Layout } from "src/sections/Layout"
-import { getComments, getMe } from "client/api/fetchers"
-import { Comments } from "../src/sections/Comments/Comments"
+import { dehydrate, QueryClient } from "@tanstack/react-query"
+import { getComments } from "client/api/fetchers"
+import { useMeQuery } from "client/api/useQueries"
 import { createContext } from "react"
 import { UserEntityServerResponse } from "server/server-response.types"
-import { useMeQuery } from "client/api/useQueries"
+import { Layout } from "src/sections/Layout"
+import { Comments } from "../src/sections/Comments/Comments"
 
 export const UserContext = createContext<UserEntityServerResponse>(undefined)
 

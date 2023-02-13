@@ -12,7 +12,7 @@ export const useVotesMutations = (username: string) => {
       const prevComments = client.getQueryData(["comments"])
       client.setQueryData<CommentServerResponse[]>(["comments"], comments =>
         produce(comments, draft => {
-          let comment = draft.find(comment => comment.id === args.commentId)
+          const comment = draft.find(comment => comment.id === args.commentId)
 
           comment.score += args.isUp ? 1 : -1
 

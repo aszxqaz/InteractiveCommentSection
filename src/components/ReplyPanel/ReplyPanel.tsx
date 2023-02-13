@@ -8,12 +8,10 @@ import {
   forwardRef,
   useContext,
   useEffect,
-  useImperativeHandle,
   useRef,
   useState,
 } from "react"
 import { UserContext } from "pages"
-import { BaseSpinner } from "../Spinner/Spinner"
 import { BaseButton } from "../Button/Button"
 import styles from "./ReplyPanel.module.scss"
 
@@ -61,11 +59,13 @@ export const ReplyPanel = forwardRef(function _ReplyPanel(
     try {
       const data = await onSubmit(pureContent)
       setContent("")
+
       console.log(data)
     } catch (e) {
       console.log(e)
     } finally {
       setIsSubmitting(false)
+
     }
   }
 
