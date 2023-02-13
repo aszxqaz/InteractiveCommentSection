@@ -33,6 +33,7 @@ class UserService extends BaseService {
             }
           }
           default: {
+            console.log(e)
           }
         }
       } else {
